@@ -1,0 +1,47 @@
+name: Deploy the adoption page to Cloudflare Pages
+
+# The page is one file, index.html. Every push to main that changes it goes live at
+# https://adopt.abigailhaddad.com (Cloudflare Pages project `adopt`).
+#
+# Secrets: CLOUDFLARE_API_TOKEN (Account > Cloudflare Pages > Edit) and CLOUDFLARE_ACCOUNT_ID.
+# Without both, the run says so and deploys nothing.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "index.html"
+      - ".github/workflows/deploy.yml"
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-adopt
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      HAS_CF: ${{ secrets.CLOUDFLARE_API_TOKEN != '' && secrets.CLOUDFLARE_ACCOUNT_ID != '' }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check the page is there
+        run: test -s index.html
+      - name: Skip when the Cloudflare secrets are not set
+        if: ${{ env.HAS_CF != 'true' }}
+        run: echo "::notice::CLOUDFLARE_API_TOKEN or CLOUDFLARE_ACCOUNT_ID is not set, so the page was not deployed."
+      - name: Put the page in a folder of its own
+        if: ${{ env.HAS_CF == 'true' }}
+        run: mkdir dist && cp index.html dist/
+      - name: Deploy
+        if: ${{ env.HAS_CF == 'true' }}
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          wranglerVersion: "4.42.0"
+          command: pages deploy dist --project-name=adopt --branch=main --commit-dirty=true
