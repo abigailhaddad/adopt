@@ -174,9 +174,8 @@ footer{margin-top:2rem;padding:1.5rem 0 3rem;border-top:1px solid var(--border);
     <p class="tag">Why federal contracts skipped competition.</p>
     <ul class="chips" aria-label="Status"><li class="chip chip-g">Refreshes daily</li><li class="chip chip-g">Live sites</li><li class="chip chip-n">LLM key</li></ul>
   </header>
-  <dl class="glance"><div><dt>Source</dt><dd>Justification notices posted on SAM.gov.</dd></div><div><dt>Size</dt><dd>20,019 notices and 22,160 attachments. About 11 GB of original files.</dd></div><div><dt>Refresh</dt><dd>Daily.</dd></div><div><dt>LLM cost</dt><dd>About $0.15 a day ($4.50 a month).</dd></div></dl>
-  <div class="lists"><section><h4>What you get</h4><ul><li>Every justification notice posted on SAM.gov since January 2025: agency, office, dates and award number</li><li>The original files and their full text</li><li>The matching federal award, where one exists</li><li>Vendor, dollar value, legal authority and a summary, pulled out by an LLM because the notices have no structured data (experimental)</li><li>A daily email digest of the most notable new ones</li></ul></section></div>
-  <section class="know"><h4>Known issues</h4><ul><li>About 9,000 notices are Special Notices picked by title, not formal justifications</li><li>Some attachments are only links, or were deleted or never public</li><li>Text collected before 2026-11-06 has some split words and missing apostrophes</li></ul></section>
+  <dl class="glance"><div><dt>Size</dt><dd>20,019 notices and 22,160 attachments (about 11 GB)</dd></div><div><dt>LLM cost</dt><dd>About $4.50 a month</dd></div></dl>
+  <div class="lists"><section><h4>What you get</h4><ul><li>Every justification notice on SAM.gov since January 2025, with the original files and text</li><li>An LLM pulls out the vendor, dollar value, legal reason and a summary (experimental)</li><li>A daily email digest of the notable ones</li></ul></section></div>
   
   <p class="lic">Code: Apache 2.0 · Data: CC0</p>
   <div class="links"><a class="btn btn-main" href="https://huggingface.co/datasets/abigailhaddad/federal-ja-documents">Dataset</a><a class="btn" data-site="federal-ja-documents" href="https://federal-ja-documents.abigailhaddad.com/">Website</a><a class="btn" href="https://woah-jas.abigailhaddad.com/">Daily digest</a><a class="btn" href="https://github.com/abigailhaddad/federal-ja-documents">Code</a><a class="btn" href="https://github.com/abigailhaddad/federal-ja-documents/blob/main/HANDOFF.md">Handoff guide</a></div>
@@ -184,12 +183,11 @@ footer{margin-top:2rem;padding:1.5rem 0 3rem;border-top:1px solid var(--border);
 <article class="card" id="ota" aria-labelledby="ota-h">
   <header class="card-head">
     <h3 id="ota-h"><b>OTA Watch</b></h3>
-    <p class="tag">Federal Other Transaction awards.</p>
+    <p class="tag">Federal “Other Transaction” deals, made outside the usual contracting rules.</p>
     <ul class="chips" aria-label="Status"><li class="chip chip-g">Refreshes daily</li><li class="chip chip-g">Live site</li><li class="chip chip-n">LLM key</li></ul>
   </header>
-  <dl class="glance"><div><dt>Source</dt><dd>Every Other Transaction record in FPDS, the federal contracting database. These deals fall outside the usual acquisition rules and aren’t in USAspending.</dd></div><div><dt>Size</dt><dd>59,581 records, signed 2000-11-15 to 2026-11-04.</dd></div><div><dt>Refresh</dt><dd>Daily.</dd></div><div><dt>LLM cost</dt><dd>About $1 a month.</dd></div></dl>
-  <div class="lists"><section><h4>What you get</h4><ul><li>Every Other Transaction record in the federal contracting system, back to 2000</li><li>Agency, vendor, dates and dollars <code>obligated</code> for each</li><li>A flag for deals run through a consortium (fiscal 2022 on)</li><li>A by-year summary</li></ul></section></div>
-  <section class="know"><h4>Known issues</h4><ul><li>Only Defense, Homeland Security and Interior contracting offices appear</li><li>Use <code>obligated</code> for dollars. FPDS's other value fields disagree with each other</li><li>The vendor is often a consortium, not the company doing the work</li></ul></section>
+  <dl class="glance"><div><dt>Size</dt><dd>59,581 records, 2000 to 2026</dd></div><div><dt>LLM cost</dt><dd>About $1 a month</dd></div></dl>
+  <div class="lists"><section><h4>What you get</h4><ul><li>Every Other Transaction record from FPDS, the federal contracting database: agency, vendor, dates and dollars obligated</li><li>A flag for deals run through a consortium</li></ul></section></div>
   
   <p class="lic">Code: MIT · Data: see dataset card</p>
   <div class="links"><a class="btn btn-main" href="https://huggingface.co/datasets/abigailhaddad/ota-watch">Dataset</a><a class="btn" href="https://ota-watch.abigailhaddad.com/">Website</a><a class="btn" href="https://github.com/abigailhaddad/ota-watch">Code</a><a class="btn" href="https://github.com/abigailhaddad/ota-watch/blob/main/HANDOFF.md">Handoff guide</a></div>
@@ -200,9 +198,8 @@ footer{margin-top:2rem;padding:1.5rem 0 3rem;border-top:1px solid var(--border);
     <p class="tag">Defense contract awards, one row each.</p>
     <ul class="chips" aria-label="Status"><li class="chip chip-g">Refreshes daily</li><li class="chip chip-g">Live site</li></ul>
   </header>
-  <dl class="glance"><div><dt>Source</dt><dd>The Defense Department's daily contract announcements on <a href="https://www.war.gov/News/Contracts/">war.gov</a>.</dd></div><div><dt>Size</dt><dd>43,612 awards, 2014-07-01 to 2026-11-05.</dd></div><div><dt>Refresh</dt><dd>Daily.</dd></div></dl>
-  <div class="lists"><section><h4>What you get</h4><ul><li>Every contract award the Defense Department has announced since July 2014</li><li>The date, military branch and the full award text for each</li><li>The company and its city and state, where they could be read</li></ul></section></div>
-  <section class="know"><h4>Known issues</h4><ul><li>Dollar amounts and contract numbers are only in the award text, not in their own columns</li><li>Company and place are read from the award text, about 95% of the time, and are blank when unsure</li></ul></section>
+  <dl class="glance"><div><dt>Size</dt><dd>43,612 awards since July 2014</dd></div></dl>
+  <div class="lists"><section><h4>What you get</h4><ul><li>Every contract award the Defense Department has announced: date, branch and full award text</li><li>The company and its city and state, where they could be read</li></ul></section></div>
   
   <p class="lic">Code: MIT · Data: public domain (US government works)</p>
   <div class="links"><a class="btn btn-main" href="https://huggingface.co/datasets/abigailhaddad/dod-daily-contracts">Dataset</a><a class="btn" href="https://dod-daily-contracts.abigailhaddad.com/">Website</a><a class="btn" href="https://github.com/abigailhaddad/dod">Code</a><a class="btn" href="https://github.com/abigailhaddad/dod/blob/main/HANDOFF.md">Handoff guide</a></div>
@@ -210,12 +207,11 @@ footer{margin-top:2rem;padding:1.5rem 0 3rem;border-top:1px solid var(--border);
 <article class="card" id="eeoc" aria-labelledby="eeoc-h">
   <header class="card-head">
     <h3 id="eeoc-h"><b>EEOC Appellate Decisions</b></h3>
-    <p class="tag">Federal-sector appeal decisions, with model-read case fields.</p>
+    <p class="tag">EEOC decisions on federal employees’ appeals.</p>
     <ul class="chips" aria-label="Status"><li class="chip chip-g">Refreshes daily</li><li class="chip chip-g">Live site</li><li class="chip chip-n">LLM key</li></ul>
   </header>
-  <dl class="glance"><div><dt>Source</dt><dd>Every file on EEOC's <a href="https://www.eeoc.gov/federal-sector/appellate-decisions">federal-sector appellate decisions page</a>.</dd></div><div><dt>Size</dt><dd>115,882 files, about 5 GB. An LLM read the 5,744 decisions posted since 2025.</dd></div><div><dt>Refresh</dt><dd>Daily.</dd></div><div><dt>LLM cost</dt><dd>About $0.003 per new decision, so cents a day.</dd></div></dl>
-  <div class="lists"><section><h4>What you get</h4><ul><li>Every federal-sector appeal decision EEOC posts, with the original files</li><li>For decisions since 2025: the agency, who appealed, which bases were claimed (race, sex, disability, age, reprisal), whether discrimination was found and whether relief was granted. An LLM extracts these because EEOC publishes no structured data</li><li>Accuracy figures for each of those fields</li></ul></section></div>
-  <section class="know"><h4>Known issues</h4><ul><li>A file number doesn't reliably identify a decision</li><li>The accuracy check uses an answer key made by Claude agents, not lawyers</li><li>Posting date is not decision date</li></ul></section>
+  <dl class="glance"><div><dt>Size</dt><dd>115,882 files, about 5 GB</dd></div><div><dt>LLM cost</dt><dd>About $0.003 per new decision</dd></div></dl>
+  <div class="lists"><section><h4>What you get</h4><ul><li>Every federal-sector appeal decision EEOC posts, with the original files</li><li>An LLM pulls case details from decisions since 2025: the agency, grounds claimed and outcome (5,744 so far)</li></ul></section></div>
   
   <p class="lic">Code: MIT · Data: public records</p>
   <div class="links"><a class="btn btn-main" href="https://huggingface.co/datasets/abigailhaddad/eeoc-appellate-decisions">Dataset</a><a class="btn" data-site="eeoc-decisions" href="https://eeoc-decisions.abigailhaddad.com/">Website</a><a class="btn" href="https://github.com/abigailhaddad/eeoc-appellate-decisions">Code</a><a class="btn" href="https://github.com/abigailhaddad/eeoc-appellate-decisions/blob/main/HANDOFF.md">Handoff guide</a></div>
@@ -226,9 +222,8 @@ footer{margin-top:2rem;padding:1.5rem 0 3rem;border-top:1px solid var(--border);
     <p class="tag">Every federal union contract, as PDFs and text.</p>
     <ul class="chips" aria-label="Status"><li class="chip chip-g">Refreshes weekly</li><li class="chip chip-g">Live site</li></ul>
   </header>
-  <dl class="glance"><div><dt>Source</dt><dd>Every federal union contract in <a href="https://www.opm.gov/policy-data-oversight/labor-management-relations/collective-bargaining-agreements/">OPM's public database</a>.</dd></div><div><dt>Size</dt><dd>1,248 records, 1,243 PDFs. As of 2026-11-01.</dd></div><div><dt>Refresh</dt><dd>Weekly. New contracts are downloaded, read and published automatically. The termination flags are reviewed by hand.</dd></div></dl>
-  <div class="lists"><section><h4>What you get</h4><ul><li>Every federal union contract in OPM's database, as PDFs with their text</li><li>The agency, union and dates OPM lists for each</li><li>A first-pass flag for contracts terminated under the 2025 executive orders, with sources</li></ul></section></div>
-  <section class="know"><h4>Known issues</h4><ul><li>Flags are leads to check, not findings. Court status goes stale fast</li><li>Scanned agreements have little or no text. No OCR was run</li></ul></section>
+  <dl class="glance"><div><dt>Size</dt><dd>1,248 contracts</dd></div></dl>
+  <div class="lists"><section><h4>What you get</h4><ul><li>The PDFs with their text, plus the agency, union and dates OPM lists</li><li>A first-pass flag for contracts terminated under the 2025 executive orders</li></ul></section></div>
   
   <p class="lic">Code: MIT · Data: OPM-published documents, unofficial copy</p>
   <div class="links"><a class="btn btn-main" href="https://huggingface.co/datasets/abigailhaddad/opm-cba-agreements">Dataset</a><a class="btn" data-site="opm-union-contracts" href="https://opm-union-contracts.abigailhaddad.com/">Website</a><a class="btn" href="https://github.com/abigailhaddad/opm-cba-archive">Code</a><a class="btn" href="https://github.com/abigailhaddad/opm-cba-archive/blob/main/HANDOFF.md">Handoff guide</a></div>
@@ -239,9 +234,8 @@ footer{margin-top:2rem;padding:1.5rem 0 3rem;border-top:1px solid var(--border);
     <p class="tag">HHS Appeals Board decisions back to 1974.</p>
     <ul class="chips" aria-label="Status"><li class="chip chip-g">Refreshes daily</li><li class="chip chip-g">Live site</li></ul>
   </header>
-  <dl class="glance"><div><dt>Source</dt><dd>Every decision the HHS Departmental Appeals Board publishes.</dd></div><div><dt>Size</dt><dd>9,853 decisions (3,319 Appellate from 1974, 6,534 ALJ from 1985), through 2026-11-02. Plus 224 selected Medicare Appeals Council decisions.</dd></div><div><dt>Refresh</dt><dd>Daily.</dd></div></dl>
-  <div class="lists"><section><h4>What you get</h4><ul><li>Every decision the HHS Departmental Appeals Board publishes: appellate decisions back to 1974 and judge decisions back to 1985</li><li>Case details from each decision's header, and the full text</li><li>A selection of Medicare Appeals Council decisions</li></ul></section></div>
-  <section class="know"><h4>Known issues</h4><ul><li>The Council file is a selection the Board chose to post, not everything it decided</li><li>Category labels are a heuristic with no measured precision or recall</li><li>Some old scans extract as garbled text without being flagged</li></ul></section>
+  <dl class="glance"><div><dt>Size</dt><dd>9,853 decisions, plus 224 Medicare Appeals Council decisions</dd></div></dl>
+  <div class="lists"><section><h4>What you get</h4><ul><li>Appeals decisions back to 1974 and administrative law judge decisions back to 1985, with full text</li><li>Case details from each decision’s header</li></ul></section></div>
   <p class="credit">The original corpus was built by <a href="https://github.com/KMisener90/HHS_DAB_Collect-Sort">KMisener90</a> (this repo is a fork, MIT). The live site and dataset are mine.</p>
   <p class="lic">Code: MIT · Data: US government works</p>
   <div class="links"><a class="btn btn-main" href="https://huggingface.co/datasets/abigailhaddad/hhs-dab-decisions">Dataset</a><a class="btn" href="https://hhs-dab.abigailhaddad.com/">Website</a><a class="btn" href="https://github.com/abigailhaddad/HHS_DAB_Collect-Sort">Code</a><a class="btn" href="https://github.com/abigailhaddad/HHS_DAB_Collect-Sort/blob/cleanup/HANDOFF.md">Handoff guide</a></div>
@@ -252,9 +246,8 @@ footer{margin-top:2rem;padding:1.5rem 0 3rem;border-top:1px solid var(--border);
     <p class="tag">DC procurement records, kept after the portal drops them.</p>
     <ul class="chips" aria-label="Status"><li class="chip chip-g">Refreshes weekly</li><li class="chip chip-g">Live site</li></ul>
   </header>
-  <dl class="glance"><div><dt>Source</dt><dd>DC's <a href="https://contracts.ocp.dc.gov/">Contracts and Procurement Transparency Portal</a>: contracts, purchase orders, payments and solicitations.</dd></div><div><dt>Size</dt><dd>7,544 contract periods, 243,611 purchase orders, 885,916 payments and 16,274 solicitations, as of 2026-11-02.</dd></div><div><dt>Refresh</dt><dd>Weekly. Records the portal drops stay in the archive, marked as delisted.</dd></div></dl>
-  <div class="lists"><section><h4>What you get</h4><ul><li>DC's contracts, purchase orders and payments, with solicitations and their documents</li><li>Weekly history, so records the portal later drops are still here</li></ul></section></div>
-  <section class="know"><h4>Known issues</h4><ul><li>A contract row is an option period, not a contract. Summing amounts double counts</li><li>About half of payments carry no contract number</li><li>The portal's own terms weren't found. The data.gov entry lists CC BY 4.0</li></ul></section>
+  <dl class="glance"><div><dt>Size</dt><dd>885,916 payments, 243,611 purchase orders and 7,544 contract periods</dd></div></dl>
+  <div class="lists"><section><h4>What you get</h4><ul><li>DC’s contracts, purchase orders, payments and solicitations</li><li>Weekly history, so records the portal drops stay</li></ul></section></div>
   
   <p class="lic">Code: MIT · Data: see dataset card</p>
   <div class="links"><a class="btn btn-main" href="https://huggingface.co/datasets/abigailhaddad/dc-procurement">Dataset</a><a class="btn" data-site="dc-procurement" href="https://dc-procurement.abigailhaddad.com/">Website</a><a class="btn" href="https://github.com/abigailhaddad/dc-software-procurement">Code</a><a class="btn" href="https://github.com/abigailhaddad/dc-software-procurement/blob/main/HANDOFF.md">Handoff guide</a></div>
@@ -265,9 +258,8 @@ footer{margin-top:2rem;padding:1.5rem 0 3rem;border-top:1px solid var(--border);
     <p class="tag">Federal contract terminations, with the reason.</p>
     <ul class="chips" aria-label="Status"><li class="chip chip-g">Refreshes monthly</li><li class="chip chip-g">Live site</li></ul>
   </header>
-  <dl class="glance"><div><dt>Source</dt><dd>USAspending’s contract data. Keeps the three termination types: convenience, default and cause.</dd></div><div><dt>Size</dt><dd>67,966 termination transactions, 2024-10-01 to 2026-09-30.</dd></div><div><dt>Refresh</dt><dd>Monthly.</dd></div></dl>
-  <div class="lists"><section><h4>What you get</h4><ul><li>Every federal contract termination since October 2024</li><li>The reason (convenience, cause or default), the agency, the vendor and the dollars involved</li><li>The raw downloads behind it</li></ul></section></div>
-  <section class="know"><h4>Known issues</h4><ul><li>A row is a transaction, so one contract can appear several times</li><li>Recent months fill in late as agencies report</li></ul></section>
+  <dl class="glance"><div><dt>Size</dt><dd>67,966 terminations since October 2024</dd></div></dl>
+  <div class="lists"><section><h4>What you get</h4><ul><li>The reason (convenience, cause or default), agency, vendor and dollars involved</li></ul></section></div>
   
   <p class="lic">Code: MIT · Data: public domain (US government works)</p>
   <div class="links"><a class="btn btn-main" href="https://huggingface.co/datasets/abigailhaddad/contract-terminations">Dataset</a><a class="btn" href="https://terminations.abigailhaddad.com/">Website</a><a class="btn" href="https://github.com/abigailhaddad/terminations">Code</a><a class="btn" href="https://github.com/abigailhaddad/terminations/blob/main/HANDOFF.md">Handoff guide</a></div>
@@ -275,12 +267,11 @@ footer{margin-top:2rem;padding:1.5rem 0 3rem;border-top:1px solid var(--border);
 <article class="card" id="sf133" aria-labelledby="sf133-h">
   <header class="card-head">
     <h3 id="sf133-h"><b>SF-133 Budget Execution</b></h3>
-    <p class="tag">Budget execution for every federal account, by month.</p>
+    <p class="tag">How much of each federal account’s money has been spent, month by month.</p>
     <ul class="chips" aria-label="Status"><li class="chip chip-g">Refreshes weekly</li><li class="chip chip-g">Live site</li></ul>
   </header>
-  <dl class="glance"><div><dt>Source</dt><dd>The 29 agency workbooks OMB posts each year on MAX.gov (the SF-133).</dd></div><div><dt>Size</dt><dd>3.06 million rows, FY2018 to FY2026, 7,953 to 9,319 accounts a year.</dd></div><div><dt>Refresh</dt><dd>Weekly. It checks OMB’s pages and republishes when OMB updates a workbook. FY2018, FY2023 and FY2024 are refreshed by hand.</dd></div></dl>
-  <div class="lists"><section><h4>What you get</h4><ul><li>Budget execution for every federal account, month by month, FY2018 to FY2026</li><li>Total budgetary resources, unobligated balances, obligations and outlays for each account</li><li>A flag for gift and donation accounts</li></ul></section></div>
-  <section class="know"><h4>Known issues</h4><ul><li>Amounts are fiscal-year-to-date. Line 2500 is total budgetary resources, not budget authority</li><li>Totals include financing accounts and accounts that report no unobligated balance. The apportionment site leaves those out</li><li>No October anywhere. FY2019 has no January or February in any workbook</li><li>The gift-account flag is a title match, not a judgment</li></ul></section>
+  <dl class="glance"><div><dt>Size</dt><dd>3.06 million rows, FY2018 to FY2026</dd></div></dl>
+  <div class="lists"><section><h4>What you get</h4><ul><li>For each account: money available, not yet committed, committed and paid out</li><li>A flag for gift and donation accounts</li></ul></section></div>
   
   <p class="lic">Code: MIT · Data: US government works</p>
   <div class="links"><a class="btn btn-main" href="https://huggingface.co/datasets/abigailhaddad/sf133-budget-execution">Dataset</a><a class="btn" data-site="sf133-budget-execution" href="https://sf133-budget-execution.abigailhaddad.com/">Website</a><a class="btn" href="https://github.com/abigailhaddad/sf133-budget-execution">Code</a><a class="btn" href="https://github.com/abigailhaddad/sf133-budget-execution#rebuild">Rebuild notes</a></div>
@@ -291,9 +282,8 @@ footer{margin-top:2rem;padding:1.5rem 0 3rem;border-top:1px solid var(--border);
     <p class="tag">The questions on USAJOBS application questionnaires.</p>
     <ul class="chips" aria-label="Status"><li class="chip chip-a">Refresh by hand</li><li class="chip chip-g">Live site</li></ul>
   </header>
-  <dl class="glance"><div><dt>Source</dt><dd>The questionnaire pages that USAJOBS announcements link to (USA Staffing and Monster).</dd></div><div><dt>Size</dt><dd>52,227 questionnaires and 949,370 questions from 2025.</dd></div><div><dt>Refresh</dt><dd>By hand for now. The fetcher is built and tested but not scheduled. About 251,000 more from late 2025 and 2026 would take about 84 days at a polite rate.</dd></div></dl>
-  <div class="lists"><section><h4>What you get</h4><ul><li>Every questionnaire attached to a USAJOBS announcement since 2025, with the agency and occupation</li><li>The questions in order, with their answer choices. These are blank questionnaires, with no applicant answers</li><li>Email addresses are removed from the text (phone numbers are not)</li></ul></section></div>
-  <section class="know"><h4>Known issues</h4><ul><li>Many questionnaires share most of their questions, so questions are not unique</li><li>Monster pages are raw text only. Agency-run portals are not covered</li><li>I did not find the portals' terms. Check them before reuse</li></ul></section>
+  <dl class="glance"><div><dt>Size</dt><dd>52,227 questionnaires and 949,370 questions (2025)</dd></div></dl>
+  <div class="lists"><section><h4>What you get</h4><ul><li>Every questionnaire attached to a USAJOBS announcement since 2025, with the questions in order and their answer choices (email addresses removed)</li></ul></section></div>
   
   <p class="lic">Code: MIT · Text: check the source terms</p>
   <div class="links"><a class="btn btn-main" href="https://huggingface.co/datasets/abigailhaddad/usajobs-questionnaires">Dataset</a><a class="btn" data-site="usajobs-questionnaires" href="https://usajobs-questionnaires.abigailhaddad.com/">Website</a><a class="btn" href="https://github.com/abigailhaddad/usajobs-questionnaires">Code</a><a class="btn" href="https://github.com/abigailhaddad/usajobs-questionnaires/blob/main/HANDOFF.md">Handoff guide</a></div>
