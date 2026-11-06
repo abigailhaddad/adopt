@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Adopt a Dataset</title>
+<meta name="description" content="I'm looking for a good home for some datasets.">
+<meta name="color-scheme" content="light dark">
+<script>
+/* Website addresses, in one place. Each site has a custom address (active) and a pages.dev address (always works).
+   USE_CUSTOM picks which one the links use. The static links below already use the custom address,
+   so they also work without JavaScript. */
+const USE_CUSTOM = true;
+const SITE_ADDRESSES = {
+  "eeoc-decisions": { current: "https://eeoc-decisions.pages.dev", custom: "https://eeoc-decisions.abigailhaddad.com" },
+  "opm-union-contracts": { current: "https://opm-union-contracts.pages.dev", custom: "https://opm-union-contracts.abigailhaddad.com" },
+  "sf133-budget-execution": { current: "https://sf133-budget-execution.pages.dev", custom: "https://sf133-budget-execution.abigailhaddad.com" },
+  "usajobs-questionnaires": { current: "https://usajobs-questionnaires.pages.dev", custom: "https://usajobs-questionnaires.abigailhaddad.com" },
+  "federal-ja-documents": { current: "https://federal-ja-documents.pages.dev", custom: "https://federal-ja-documents.abigailhaddad.com" },
+  "dc-procurement": { current: "https://dc-procurement.pages.dev", custom: "https://dc-procurement.abigailhaddad.com" }
+};
+document.addEventListener("DOMContentLoaded", () => {
+  for (const a of document.querySelectorAll("a[data-site]")) {
+    const s = SITE_ADDRESSES[a.dataset.site];
+    if (s) a.href = USE_CUSTOM ? s.custom : s.current;
+  }
+});
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFF8F0; --card:#FFFDF9; --surface:#F5EDE0; --text:#3D2B1F; --muted:#6B5F54;
+  --accent:#2D6A4F; --accent-hover:#245A42; --on-accent:#FFFFFF; --highlight:#D4A03C; --border:#E8DDD0;
+  --chip-g-bg:#DDEFE5; --chip-g-fg:#1E4D38; --chip-a-bg:#F6E7C1; --chip-a-fg:#5C4310; --chip-n-bg:#EFE6D8; --chip-n-fg:#4A3B30;
+  --radius:10px; --shadow:0 1px 2px rgba(61,43,31,.06), 0 2px 8px rgba(61,43,31,.04);
+  --head:'DM Sans',system-ui,sans-serif; --body:'Source Sans 3',system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#1E1914; --card:#262019; --surface:#2E271F; --text:#F1E9DF; --muted:#B9AD9F;
+    --accent:#86D1A8; --accent-hover:#A3DEBE; --on-accent:#12100D; --highlight:#D4A03C; --border:#443A30;
+    --chip-g-bg:#24402F; --chip-g-fg:#BFE8D0; --chip-a-bg:#4A3A14; --chip-a-fg:#F3DDA0; --chip-n-bg:#352D25; --chip-n-fg:#E2D8CA;
+    --shadow:0 1px 2px rgba(0,0,0,.4);
+  }
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:4.5rem}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--text);font:1.0625rem/1.6 var(--body);-webkit-text-size-adjust:100%}
+h1,h2,h3,h4{font-family:var(--head);letter-spacing:-.01em;margin:0;line-height:1.25}
+p{margin:0}
+a{color:var(--accent);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+a:hover{color:var(--accent-hover);text-decoration-thickness:2px}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px}
+code{font:.88em ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--surface);padding:.05em .35em;border-radius:4px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 1.5rem}
+.skip{position:absolute;left:-999px;top:0;background:var(--accent);color:var(--on-accent);padding:.6rem 1rem;z-index:20;border-radius:0 0 8px 0;font:600 .95rem var(--head)}
+.skip:focus{left:0}
+
+/* top bar */
+.topbar{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(6px);border-bottom:1px solid var(--border)}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:3.25rem}
+.brand{font:700 1rem var(--head);color:var(--text);text-decoration:none}
+.topbar nav{display:flex;gap:1.25rem;font:600 .92rem var(--head)}
+.topbar nav a{color:var(--muted);text-decoration:none;padding:.25rem 0;border-bottom:2px solid transparent}
+.topbar nav a:hover{color:var(--text);border-bottom-color:var(--highlight)}
+
+/* masthead */
+.masthead{padding:3.25rem 0 1.5rem}
+.masthead h1{font-size:clamp(2.1rem,4.5vw,2.9rem);font-weight:700}
+.lede{font-size:1.25rem;color:var(--muted);margin-top:.5rem;max-width:36rem}
+.meta{margin-top:1rem;display:inline-block;font:600 .85rem var(--head);color:var(--muted);border:1px solid var(--border);background:var(--surface);border-radius:999px;padding:.2rem .8rem}
+
+/* sections */
+section.block{padding:1.75rem 0}
+h2{font-size:1.6rem;font-weight:700;margin-bottom:1rem}
+.para{max-width:46rem;margin-bottom:1rem}
+.checklist{list-style:none;margin:0;padding:0;max-width:46rem;display:grid;gap:.5rem}
+.checklist li{position:relative;padding-left:1.6rem}
+.checklist li::before{content:"";position:absolute;left:.15rem;top:.62em;width:.5rem;height:.5rem;border-radius:50%;background:var(--highlight)}
+
+/* cards */
+.grid{display:grid;gap:1.5rem;grid-template-columns:repeat(auto-fit,minmax(min(100%,29rem),1fr));align-items:stretch}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:1.1rem;transition:border-color .15s}
+.card:hover,.card:focus-within{border-color:var(--highlight)}
+.card-head h3{font-size:1.3rem;font-weight:700}
+.tag{color:var(--muted);margin-top:.15rem}
+.chips{list-style:none;display:flex;flex-wrap:wrap;gap:.4rem;margin:.75rem 0 0;padding:0}
+.chip{font:600 .76rem var(--head);padding:.18rem .6rem;border-radius:999px;letter-spacing:.01em}
+.chip-g{background:var(--chip-g-bg);color:var(--chip-g-fg)}
+.chip-a{background:var(--chip-a-bg);color:var(--chip-a-fg)}
+.chip-n{background:var(--chip-n-bg);color:var(--chip-n-fg)}
+.glance{margin:0;display:grid;gap:0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.glance>div{display:grid;grid-template-columns:5rem 1fr;gap:1rem;padding:.55rem 0}
+.glance>div+div{border-top:1px solid var(--border)}
+dt{font:600 .74rem var(--head);text-transform:uppercase;letter-spacing:.06em;color:var(--muted);padding-top:.25rem}
+dd{margin:0;overflow-wrap:anywhere}
+.lists{display:grid;gap:1.1rem}
+h4{font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:.4rem}
+.card ul{margin:0;padding-left:1.1rem}
+.card ul li{margin:.2rem 0;overflow-wrap:anywhere}
+.card ul li::marker{color:var(--highlight)}
+.card ul.chips{padding-left:0}
+.card ul.chips li{margin:0}
+.card ul.chips li::marker{content:""}
+.know{background:var(--surface);border-radius:8px;padding:.85rem 1rem}
+.credit,.lic{color:var(--muted);font-size:.9rem}
+.links{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:auto}
+.btn{display:inline-flex;align-items:center;min-height:2.5rem;padding:.35rem .9rem;border:1px solid var(--border);border-radius:8px;font:600 .88rem var(--head);text-decoration:none;color:var(--text);background:var(--card)}
+.btn:hover{border-color:var(--accent);color:var(--accent)}
+.btn-main{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.btn-main:hover{background:var(--accent-hover);border-color:var(--accent-hover);color:var(--on-accent)}
+
+footer{margin-top:2rem;padding:1.5rem 0 3rem;border-top:1px solid var(--border);color:var(--muted);font-size:.92rem}
+
+@media (max-width:560px){
+  .wrap{padding:0 1rem}
+  .topbar nav{gap:1.1rem;font-size:.88rem}
+  .topbar nav a{white-space:nowrap}
+  .masthead{padding-top:2.25rem}
+  .card{padding:1.15rem}
+  .glance>div{grid-template-columns:1fr;gap:.1rem}
+  .btn{flex:1 1 auto;justify-content:center}
+}
+@media (max-width:480px){
+  .brand{display:none}
+  .topbar .wrap{justify-content:flex-start}
+}
+@media print{
+  .topbar,.skip{display:none}
+  body{background:#fff;color:#000}
+  .card{box-shadow:none;break-inside:avoid;border-color:#999}
+  .grid{display:block}.card{margin-bottom:1rem}
+  .btn{border:none;padding:0;min-height:0}
+  .btn::after{content:" (" attr(href) ")";font-weight:400;font-size:.8rem;overflow-wrap:anywhere}
+}
+</style>
+</head>
+<body id="top">
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="#top">Adopt a Dataset</a>
+    <nav aria-label="Sections"><a href="#home">A good home</a><a href="#meet">Meet them</a><a href="#next">Next steps</a></nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="wrap">
+    <section class="masthead" aria-labelledby="title">
+      <h1 id="title">🐾 Adopt a Dataset</h1>
+      <p class="lede">I'm looking for a good home for some government datasets.</p>
+      <p class="meta">Event: date and place to be announced</p>
+    </section>
+
+    <section class="block" id="home" aria-labelledby="home-h">
+      <h2 id="home-h">🏡 A good home</h2>
+      <p class="para">I put some work into getting these data sets ready, but I’m looking for someone who wants to claim each of them: maintain it, give it regular attention, keep it open and available to the community, and reach out to the researchers and other people who might use it.</p>
+      <ul class="checklist">
+        <li>All of these are data sets that run in an automated way to pull data from a government website. None of these have an existing API that the government hosts, and most involve PDFs or web scraping. <b>By putting these on Hugging Face, someone can now query all of them in one place, and by putting them in a website, a user can filter/find what they’re looking for.</b></li><li>Each one comes with a GitHub repo for the code, a Hugging Face repo for the data, and a basic website. I'm hosting the websites for now (but I would like to stop).</li><li><b>If you want to take one of these over, you should have an engineer, or someone engineer-like.</b> That is, someone who is going to respond if something breaks and periodically look at how they’re going and fix the code if something is off.</li><li>In some cases, you need an LLM API key because I’m pulling fields out from unstructured text data. I'm using Claude. The bills are small (see each card). There’s no other spend associated with these.</li><li>I put together a handoff document for each one that should help your engineer take over. For all of these, you’ll need to sign up for some (free) accounts.</li>
+      </ul>
+    </section>
+
+    <section class="block" id="meet" aria-labelledby="meet-h">
+      <h2 id="meet-h">Meet them</h2>
+      <div class="grid">
+
+<article class="card" id="ja" aria-labelledby="ja-h">
+  <header class="card-head">
+    <h3 id="ja-h"><b>Federal J&amp;A Documents</b></h3>
+    <p class="tag">Why federal contracts skipped competition.</p>
+    <ul class="chips" aria-label="Status"><li class="chip chip-g">Refreshes daily</li><li class="chip chip-g">Live sites</li><li class="chip chip-n">LLM key</li></ul>
+  </header>
+  <dl class="glance"><div><dt>Source</dt><dd>Justification notices posted on SAM.gov.</dd></div><div><dt>Size</dt><dd>20,019 notices, 22,160 attachments, 78,253 pages. About 11 GB of original files.</dd></div><div><dt>Refresh</dt><dd>Daily, started by a Cloudflare Worker (GitHub's own schedule runs hours late).</dd></div><div><dt>LLM cost</dt><dd>About $0.15 a day ($4.50 a month).</dd></div></dl>
+  <div class="lists"><section><h4>What you get</h4><ul><li>Every justification notice posted on SAM.gov since January 2025: agency, office, dates and award number</li><li>The original files and their full text</li><li>The matching federal award, where one exists</li><li>Vendor, dollar value, legal authority and a summary, pulled out by an LLM because the notices have no structured data (experimental)</li><li>A daily email digest of the most notable new ones</li></ul></section></div>
+  <section class="know"><h4>Known problems</h4><ul><li>About 9,000 notices are Special Notices picked by title, not formal justifications</li><li>Some attachments are only links, or were deleted or never public</li><li>Text read before 2026-11-06 has some split words and missing apostrophes. A <code>text_engine</code> column marks the reader</li></ul></section>
+  
+  <p class="lic">Code: Apache 2.0 · Data: CC0</p>
+  <div class="links"><a class="btn btn-main" href="https://huggingface.co/datasets/abigailhaddad/federal-ja-documents">Dataset</a><a class="btn" data-site="federal-ja-documents" href="https://federal-ja-documents.abigailhaddad.com/">Website</a><a class="btn" href="https://woah-jas.abigailhaddad.com/">Daily digest</a><a class="btn" href="https://github.com/abigailhaddad/federal-ja-documents">Code</a><a class="btn" href="https://github.com/abigailhaddad/federal-ja-documents/blob/main/HANDOFF.md">Handoff guide</a></div>
+</article>
+<article class="card" id="ota" aria-labelledby="ota-h">
+  <header class="card-head">
+    <h3 id="ota-h"><b>OTA Watch</b></h3>
+    <p class="tag">Federal Other Transaction awards.</p>
+    <ul class="chips" aria-label="Status"><li class="chip chip-g">Refreshes daily</li><li class="chip chip-g">Live site</li><li class="chip chip-n">LLM key</li></ul>
+  </header>
+  <dl class="glance"><div><dt>Source</dt><dd>Every Other Transaction record in FPDS. These deals fall outside the usual acquisition rules and aren't in USAspending.</dd></div><div><dt>Size</dt><dd>59,581 records, signed 2000-11-15 to 2026-11-04.</dd></div><div><dt>Refresh</dt><dd>Daily. The site lists new awards weekly.</dd></div><div><dt>LLM cost</dt><dd>About $1 a month.</dd></div></dl>
+  <div class="lists"><section><h4>What you get</h4><ul><li>Every Other Transaction record in the federal contracting system, back to 2000</li><li>Agency, vendor, dates and dollars <code>obligated</code> for each</li><li>A flag for deals run through a consortium (fiscal 2022 on)</li><li>A by-year summary</li></ul></section></div>
+  <section class="know"><h4>Known issues</h4><ul><li>Only Defense, Homeland Security and Interior contracting offices appear</li><li>Use <code>obligated</code> for dollars. FPDS's other value fields disagree with each other</li><li>The vendor is often a consortium, not the company doing the work</li></ul></section>
+  
+  <p class="lic">Code: MIT · Data: see dataset card</p>
+  <div class="links"><a class="btn btn-main" href="https://huggingface.co/datasets/abigailhaddad/ota-watch">Dataset</a><a class="btn" href="https://ota-watch.abigailhaddad.com/">Website</a><a class="btn" href="https://github.com/abigailhaddad/ota-watch">Code</a><a class="btn" href="https://github.com/abigailhaddad/ota-watch/blob/main/HANDOFF.md">Handoff guide</a></div>
+</article>
+<article class="card" id="dod" aria-labelledby="dod-h">
+  <header class="card-head">
+    <h3 id="dod-h"><b>DoD Daily Contracts</b></h3>
+    <p class="tag">Defense contract awards, one row each.</p>
+    <ul class="chips" aria-label="Status"><li class="chip chip-g">Refreshes daily</li><li class="chip chip-g">Live site</li></ul>
+  </header>
+  <dl class="glance"><div><dt>Source</dt><dd>The Defense Department's daily contract announcements on <a href="https://www.war.gov/News/Contracts/">war.gov</a>.</dd></div><div><dt>Size</dt><dd>43,612 awards, 2014-07-01 to 2026-11-05, in 3 files.</dd></div><div><dt>Refresh</dt><dd>Daily, about 4–5 pm ET. A broken scrape fails the run, and CI runs the tests.</dd></div></dl>
+  <div class="lists"><section><h4>What you get</h4><ul><li>Every contract award the Defense Department has announced since July 2014</li><li>The date, military branch and the full award text for each</li><li>The company and its city and state, where they could be read</li></ul></section></div>
+  <section class="know"><h4>Known problems</h4><ul><li>Dollar amounts and contract numbers are only in the text</li><li>Company and place are pulled from the award text by pattern matching (about 95% of the time) and are blank when unsure</li></ul></section>
+  
+  <p class="lic">Code: MIT · Data: public domain (US government works)</p>
+  <div class="links"><a class="btn btn-main" href="https://huggingface.co/datasets/abigailhaddad/dod-daily-contracts">Dataset</a><a class="btn" href="https://dod-daily-contracts.abigailhaddad.com/">Website</a><a class="btn" href="https://github.com/abigailhaddad/dod">Code</a><a class="btn" href="https://github.com/abigailhaddad/dod/blob/main/HANDOFF.md">Handoff guide</a></div>
+</article>
+<article class="card" id="eeoc" aria-labelledby="eeoc-h">
+  <header class="card-head">
+    <h3 id="eeoc-h"><b>EEOC Appellate Decisions</b></h3>
+    <p class="tag">Federal-sector appeal decisions, with model-read case fields.</p>
+    <ul class="chips" aria-label="Status"><li class="chip chip-g">Refreshes daily</li><li class="chip chip-g">Live site</li><li class="chip chip-n">LLM key</li></ul>
+  </header>
+  <dl class="glance"><div><dt>Source</dt><dd>Every file on EEOC's <a href="https://www.eeoc.gov/federal-sector/appellate-decisions">federal-sector appellate decisions page</a>.</dd></div><div><dt>Size</dt><dd>115,882 listed files, about 5 GB. A model read the 5,744 decisions posted since 2025.</dd></div><div><dt>Refresh</dt><dd>Daily. A monthly job re-crawls the listing to check it still matches the site.</dd></div><div><dt>LLM cost</dt><dd>About $0.003 per new decision, so cents a day.</dd></div></dl>
+  <div class="lists"><section><h4>What you get</h4><ul><li>Every federal-sector appeal decision EEOC posts, with the original files</li><li>For decisions since 2025: the agency, who appealed, which bases were claimed (race, sex, disability, age, reprisal), whether discrimination was found and whether relief was granted. An LLM extracts these because EEOC publishes no structured data</li><li>Accuracy figures for each of those fields</li></ul></section></div>
+  <section class="know"><h4>Known problems</h4><ul><li>A file number doesn't reliably identify a decision</li><li>The accuracy check uses an answer key made by Claude agents, not lawyers</li><li>Posting date is not decision date</li></ul></section>
+  
+  <p class="lic">Code: MIT · Data: public records</p>
+  <div class="links"><a class="btn btn-main" href="https://huggingface.co/datasets/abigailhaddad/eeoc-appellate-decisions">Dataset</a><a class="btn" data-site="eeoc-decisions" href="https://eeoc-decisions.abigailhaddad.com/">Website</a><a class="btn" href="https://github.com/abigailhaddad/eeoc-appellate-decisions">Code</a><a class="btn" href="https://github.com/abigailhaddad/eeoc-appellate-decisions/blob/main/HANDOFF.md">Handoff guide</a></div>
+</article>
+<article class="card" id="cba" aria-labelledby="cba-h">
+  <header class="card-head">
+    <h3 id="cba-h"><b>OPM Union Contracts</b></h3>
+    <p class="tag">Every federal union contract, as PDFs and text.</p>
+    <ul class="chips" aria-label="Status"><li class="chip chip-n">Weekly listing check</li><li class="chip chip-a">Rest by hand</li><li class="chip chip-g">Live site</li></ul>
+  </header>
+  <dl class="glance"><div><dt>Source</dt><dd>Every federal union contract in <a href="https://www.opm.gov/policy-data-oversight/labor-management-relations/collective-bargaining-agreements/">OPM's public database</a>.</dd></div><div><dt>Size</dt><dd>1,248 records, 1,243 PDFs. As of 2026-11-01.</dd></div><div><dt>Refresh</dt><dd>A weekly job snapshots OPM's listing and opens an issue. Downloading PDFs, extracting text, rebuilding the CSV and flags, and uploading are manual.</dd></div></dl>
+  <div class="lists"><section><h4>What you get</h4><ul><li>Every federal union contract in OPM's database, as PDFs with their text</li><li>The agency, union and dates OPM lists for each</li><li>A first-pass flag for contracts terminated under the 2025 executive orders, with sources</li></ul></section></div>
+  <section class="know"><h4>Known problems</h4><ul><li>Flags are leads to check, not findings. Court status goes stale fast</li><li>Scanned agreements have little or no text. No OCR was run</li></ul></section>
+  
+  <p class="lic">Code: MIT · Data: OPM-published documents, unofficial copy</p>
+  <div class="links"><a class="btn btn-main" href="https://huggingface.co/datasets/abigailhaddad/opm-cba-agreements">Dataset</a><a class="btn" data-site="opm-union-contracts" href="https://opm-union-contracts.abigailhaddad.com/">Website</a><a class="btn" href="https://github.com/abigailhaddad/opm-cba-archive">Code</a><a class="btn" href="https://github.com/abigailhaddad/opm-cba-archive/blob/main/HANDOFF.md">Handoff guide</a></div>
+</article>
+<article class="card" id="hhs-dab" aria-labelledby="hhs-dab-h">
+  <header class="card-head">
+    <h3 id="hhs-dab-h"><b>HHS Appeals Board Decisions</b></h3>
+    <p class="tag">HHS Appeals Board decisions back to 1974.</p>
+    <ul class="chips" aria-label="Status"><li class="chip chip-g">Refreshes daily</li><li class="chip chip-g">Live site</li></ul>
+  </header>
+  <dl class="glance"><div><dt>Source</dt><dd>Every decision the HHS Departmental Appeals Board publishes, via the Internet Archive and a live browser (hhs.gov blocks bots).</dd></div><div><dt>Size</dt><dd>9,853 decisions (3,319 Appellate from 1974, 6,534 ALJ from 1985), through 2026-11-02. Plus 224 selected Medicare Appeals Council decisions.</dd></div><div><dt>Refresh</dt><dd>Daily. The job fails if the list of published decisions shrinks or comes back empty.</dd></div></dl>
+  <div class="lists"><section><h4>What you get</h4><ul><li>Every decision the HHS Departmental Appeals Board publishes: appellate decisions back to 1974 and judge decisions back to 1985</li><li>Case details from each decision's header, and the full text</li><li>A selection of Medicare Appeals Council decisions</li></ul></section></div>
+  <section class="know"><h4>Known problems</h4><ul><li>The Council file is a selection the Board chose to post, not everything it decided</li><li>Category labels are a heuristic with no measured precision or recall</li><li>Some old scans extract as garbled text without being flagged</li></ul></section>
+  <p class="credit">The original corpus was built by <a href="https://github.com/KMisener90/HHS_DAB_Collect-Sort">KMisener90</a> (this repo is a fork, MIT). The live site and dataset are mine.</p>
+  <p class="lic">Code: MIT · Data: US government works</p>
+  <div class="links"><a class="btn btn-main" href="https://huggingface.co/datasets/abigailhaddad/hhs-dab-decisions">Dataset</a><a class="btn" href="https://hhs-dab.abigailhaddad.com/">Website</a><a class="btn" href="https://github.com/abigailhaddad/HHS_DAB_Collect-Sort">Code</a><a class="btn" href="https://github.com/abigailhaddad/HHS_DAB_Collect-Sort/blob/cleanup/HANDOFF.md">Handoff guide</a></div>
+</article>
+<article class="card" id="dc" aria-labelledby="dc-h">
+  <header class="card-head">
+    <h3 id="dc-h"><b>DC Procurement</b></h3>
+    <p class="tag">DC procurement records, kept after the portal drops them.</p>
+    <ul class="chips" aria-label="Status"><li class="chip chip-g">Refreshes weekly</li><li class="chip chip-g">Live site</li></ul>
+  </header>
+  <dl class="glance"><div><dt>Source</dt><dd>DC's <a href="https://contracts.ocp.dc.gov/">Contracts and Procurement Transparency Portal</a>: contracts, purchase orders, payments and solicitations.</dd></div><div><dt>Size</dt><dd>7,544 contract periods, 243,611 purchase orders, 885,916 payment lines, 16,274 solicitations. Pulled 2026-11-02.</dd></div><div><dt>Refresh</dt><dd>Weekly, Mondays. Each pull is merged into the archive, so rows the portal drops stay, marked as delisted.</dd></div></dl>
+  <div class="lists"><section><h4>What you get</h4><ul><li>DC's contracts, purchase orders and payments, with solicitations and their documents</li><li>Weekly history, so records the portal later drops are still here</li></ul></section></div>
+  <section class="know"><h4>Known problems</h4><ul><li>A contract row is an option period, not a contract. Summing amounts double counts</li><li>About half of payments carry no contract number</li><li>The portal's own terms weren't found. The data.gov entry lists CC BY 4.0</li></ul></section>
+  
+  <p class="lic">Code: MIT · Data: see dataset card</p>
+  <div class="links"><a class="btn btn-main" href="https://huggingface.co/datasets/abigailhaddad/dc-procurement">Dataset</a><a class="btn" data-site="dc-procurement" href="https://dc-procurement.abigailhaddad.com/">Website</a><a class="btn" href="https://github.com/abigailhaddad/dc-software-procurement">Code</a><a class="btn" href="https://github.com/abigailhaddad/dc-software-procurement/blob/main/HANDOFF.md">Handoff guide</a></div>
+</article>
+<article class="card" id="terminations" aria-labelledby="terminations-h">
+  <header class="card-head">
+    <h3 id="terminations-h"><b>Contract Terminations</b></h3>
+    <p class="tag">Federal contract terminations, with the reason.</p>
+    <ul class="chips" aria-label="Status"><li class="chip chip-g">Refreshes monthly</li><li class="chip chip-g">Live site</li></ul>
+  </header>
+  <dl class="glance"><div><dt>Source</dt><dd>USAspending's contract archive, one file per agency per year. Keeps three termination codes: convenience, default and cause.</dd></div><div><dt>Size</dt><dd>67,966 termination transactions, 2024-10-01 to 2026-09-30.</dd></div><div><dt>Refresh</dt><dd>Monthly, on the 1st. A broken run fails the build.</dd></div></dl>
+  <div class="lists"><section><h4>What you get</h4><ul><li>Every federal contract termination since October 2024</li><li>The reason (convenience, cause or default), the agency, the vendor and the dollars involved</li><li>The raw downloads behind it</li></ul></section></div>
+  <section class="know"><h4>Known problems</h4><ul><li>A row is a transaction, so one contract can appear several times</li><li>Recent months fill in late as agencies report</li></ul></section>
+  
+  <p class="lic">Code: MIT · Data: public domain (US government works)</p>
+  <div class="links"><a class="btn btn-main" href="https://huggingface.co/datasets/abigailhaddad/contract-terminations">Dataset</a><a class="btn" href="https://terminations.abigailhaddad.com/">Website</a><a class="btn" href="https://github.com/abigailhaddad/terminations">Code</a><a class="btn" href="https://github.com/abigailhaddad/terminations/blob/main/HANDOFF.md">Handoff guide</a></div>
+</article>
+<article class="card" id="sf133" aria-labelledby="sf133-h">
+  <header class="card-head">
+    <h3 id="sf133-h"><b>SF-133 Budget Execution</b></h3>
+    <p class="tag">Budget execution for every federal account, by month.</p>
+    <ul class="chips" aria-label="Status"><li class="chip chip-a">Refresh by hand</li><li class="chip chip-g">Live site</li></ul>
+  </header>
+  <dl class="glance"><div><dt>Source</dt><dd>The 29 agency workbooks OMB posts each year on MAX.gov (the SF-133).</dd></div><div><dt>Size</dt><dd>3.06 million rows, FY2018 to FY2026, 7,953 to 9,319 accounts a year.</dd></div><div><dt>Refresh</dt><dd>By hand. Download the new year's workbooks, run the build scripts, publish. OMB updates them monthly during the year.</dd></div></dl>
+  <div class="lists"><section><h4>What you get</h4><ul><li>Budget execution for every federal account, month by month, FY2018 to FY2026</li><li>Total budgetary resources, unobligated balances, obligations and outlays for each account</li><li>A flag for gift and donation accounts</li></ul></section></div>
+  <section class="know"><h4>Known problems</h4><ul><li>Amounts are fiscal-year-to-date. Line 2500 is total budgetary resources, not budget authority</li><li>Totals here include financing accounts and accounts with no line 2490. The apportionment site leaves some out</li><li>No October anywhere. FY2019 has no January or February in any workbook</li><li>The gift-account flag is a title match, not a judgment</li></ul></section>
+  
+  <p class="lic">Code: MIT · Data: US government works</p>
+  <div class="links"><a class="btn btn-main" href="https://huggingface.co/datasets/abigailhaddad/sf133-budget-execution">Dataset</a><a class="btn" data-site="sf133-budget-execution" href="https://sf133-budget-execution.abigailhaddad.com/">Website</a><a class="btn" href="https://github.com/abigailhaddad/sf133-budget-execution">Code</a><a class="btn" href="https://github.com/abigailhaddad/sf133-budget-execution#rebuild">Rebuild notes</a></div>
+</article>
+<article class="card" id="questionnaires" aria-labelledby="questionnaires-h">
+  <header class="card-head">
+    <h3 id="questionnaires-h"><b>USAJOBS Questionnaires</b></h3>
+    <p class="tag">The questions on USAJOBS application questionnaires.</p>
+    <ul class="chips" aria-label="Status"><li class="chip chip-a">Refresh by hand</li><li class="chip chip-g">Live site</li></ul>
+  </header>
+  <dl class="glance"><div><dt>Source</dt><dd>The USA Staffing and Monster questionnaire pages that USAJOBS announcements link to.</dd></div><div><dt>Size</dt><dd>52,227 questionnaires and 949,370 questions from the 2025 collection.</dd></div><div><dt>Refresh</dt><dd>By hand for now. The fetcher is built and tested but not scheduled. About 251,000 more from late 2025 and 2026 would take about 84 days at a polite rate.</dd></div></dl>
+  <div class="lists"><section><h4>What you get</h4><ul><li>Every questionnaire attached to a USAJOBS announcement since 2025, with the agency and occupation</li><li>The questions in order, with their answer choices. These are blank questionnaires, with no applicant answers</li><li>Email addresses are removed from the text (phone numbers are not)</li><li>The 2.3 million questionnaire ids still to collect</li></ul></section></div>
+  <section class="know"><h4>Known problems</h4><ul><li>Many questionnaires share most of their questions, so questions are not unique</li><li>Monster pages are raw text only. Agency-run portals are not covered</li><li>I did not find the portals' terms. Check them before reuse</li></ul></section>
+  
+  <p class="lic">Code: MIT · Text: check the source terms</p>
+  <div class="links"><a class="btn btn-main" href="https://huggingface.co/datasets/abigailhaddad/usajobs-questionnaires">Dataset</a><a class="btn" data-site="usajobs-questionnaires" href="https://usajobs-questionnaires.abigailhaddad.com/">Website</a><a class="btn" href="https://github.com/abigailhaddad/usajobs-questionnaires">Code</a><a class="btn" href="https://github.com/abigailhaddad/usajobs-questionnaires/blob/main/HANDOFF.md">Handoff guide</a></div>
+</article>
+      </div>
+    </section>
+
+    <section class="block" id="next" aria-labelledby="next-h">
+      <h2 id="next-h">👋 Next steps</h2>
+      <p class="para">Come say hi.</p>
+      <ul class="checklist">
+        <li>Poke around the repos and read the handoff guides.</li><li>Clone one and run it.</li><li>Play with the data on Hugging Face.</li><li>If you're interested, or just curious, email me at <a href="mailto:abigail.haddad@gmail.com">abigail.haddad@gmail.com</a>. I'd love to hear from you.</li>
+      </ul>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    As of 2026-11-06. Counts come from each dataset on Hugging Face and drift as the jobs run. I can't promise the data has no errors I missed.
+  </div>
+</footer>
+</body>
+</html>
